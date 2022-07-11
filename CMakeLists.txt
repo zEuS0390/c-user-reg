@@ -4,7 +4,7 @@ project(registration LANGUAGES "CXX" VERSION 1.0)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-add_executable(registration main.cpp)
+add_executable(registration ${CMAKE_SOURCE_DIR}/src/main.cpp ${CMAKE_SOURCE_DIR}/src/db.cpp)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
