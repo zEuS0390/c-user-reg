@@ -5,19 +5,16 @@
 #define DBFILE "dbname.txt"
 
 // Main function
-int main(int argc, char **argv) {
+int main() {
     // Declare limited entries variable for loop control
     int entries = 3;
 
     std::ifstream ifs(DBFILE);
-    std::string dbname;
+    std::string dbname = "database.db";
     std::getline(ifs, dbname);
 
     // Instantiate database connection
     DB *db = new DB(dbname.c_str());
-
-    delete &dbname;
-    delete &ifs;
 
     // Create a user table if not exist
     user::createTable(db);
@@ -38,8 +35,6 @@ int main(int argc, char **argv) {
             break;
         }
         statust status = user::register_(db, first_name.c_str(), last_name.c_str());
-        delete &first_name;
-        delete &last_name;
         entries--;
         if (status != 0) {
             break;
